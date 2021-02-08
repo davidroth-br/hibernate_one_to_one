@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="domain.Departments" table="DEPARTMENTS">
+        <id name="departmentId" column="department_id">
+            <generator class="sequence">
+                <param name="sequence_name">DEPARTMENTS_SEQ</param>
+            </generator>
+        </id>
+        <property name="departmentName" column="department_name"/>
+        <property name="managerId" column="manager_id"/>
+        <property name="locationId" column="location_id"/>
+
+        <one-to-one name="departmentInfo" class="domain.DepartmentInfo" cascade="save-update"/>
+    </class>
+</hibernate-mapping>
